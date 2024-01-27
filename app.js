@@ -10,8 +10,4 @@ gifts.forEach( (e, i) => {
     }, {once: true})
 })
 
-gifts[boxToPick].addEventListener("click", (e) => {
-  e.target.textContent = code
-})
-
 console.log(gifts[boxToPick])
