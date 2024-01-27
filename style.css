@@ -1,5 +1,5 @@
 /* FONT */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 /* RESET */
 *, *::before, *::after {
@@ -37,6 +37,14 @@ body {
   color: black;
 }
 
+.bg-accent {
+  background-color: var(--clr-accent);
+}
+
+.bg-neutral {
+  background-color: white;
+}
+
 .fs-l {
   font-size: 2rem;
 }
@@ -51,6 +59,18 @@ body {
 
 .fs-xs {
   font-size: .5rem;
+}
+
+.fw-n {
+  font-weight: 400;
+}
+
+.fw-sb {
+  font-weight: 600;
+}
+
+.fw-b {
+  font-weight: 700;
 }
 
 .txt-center {
@@ -75,10 +95,11 @@ header {
 }
 
 .divider {
-  background-color: white;
   margin-inline: auto;
   height: 5px;
   width: 40px;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
 }
 
 /* CHOOSE US */
@@ -102,4 +123,75 @@ header {
   box-shadow: 0 5px 3px rgba(0, 0, 0, .2);
   border-radius: 3rem;
   padding: 0.5rem 1rem;
+}
+
+/* ABOUT US */
+.about-us-container {
+  padding: 20px 30px;
+  padding-top: 20%;
+  background-color: var(--clr-accent);
+  clip-path: polygon(50% 0%, 100% 15%, 100% 100%, 0 100%, 0 15%);
+}
+
+.car-park-image-container {
+  margin-bottom: 50px;
+}
+
+/* SCREENSHOT */
+.screenshot-container {
+  padding: 2rem;
+  display:flex;
+  flex-direction: column;
+  background-image: url('assets/bg-sample.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  gap: 2rem;
+}
+
+.gift-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+/* CONTACT */
+.contact-container {
+  display:flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 2rem;
+}
+
+.contact-info-container {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  gap: 1.5rem;
+}
+
+.push-right {
+  align-self: flex-end;
+}
+
+/* FOOTER */
+.socials {
+  display:flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1.5rem;
+}
+
+.social-icons-container {
+  display:flex;
+  width: fit-content;
+  gap: 2rem;
+  margin-inline: auto;
+}
+
+.outro {
+  clip-path: polygon(49% 8%, 100% 0, 100% 100%, 0 100%, 0 0);
+  display:flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 5% 2rem;
 }
