@@ -8,6 +8,10 @@
   font: inherit;
 }
 
+a {
+  text-decoration: none;
+}
+
 img, svg {
   display: block;
   max-width: 100%;
@@ -148,6 +152,22 @@ header {
   gap: 2rem;
 }
 
+.gift-img:hover {
+  cursor: pointer;
+}
+
+.gift-img {
+  position:relative;
+  display: grid;
+  place-items: center;
+}
+
+.helper-text {
+  color: red;
+  position:absolute;
+  text-align: center;
+}
+
 .gift-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -170,7 +190,7 @@ header {
 }
 
 .push-right {
-  align-self: flex-end;
+  margin-left: auto;
 }
 
 /* FOOTER */
