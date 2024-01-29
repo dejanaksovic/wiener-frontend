@@ -1,6 +1,6 @@
 const gifts = document.querySelectorAll('.gift-img');
 const helperTexts = document.querySelectorAll(".helper-text");
-const URL = "http://localhost:3000";
+const URL = "https://wiener-backend.onrender.com";
 const errorText = document.querySelector("#error-text");
 
 let code;
