@@ -10,13 +10,34 @@ let boxesClickedCount = 0;
 const getCode = async () => {
   const res = await fetch(`${URL}/giveaway/one`);
   const data = await res.json();
+  let interval;
 
   if(data.code && data.code.length !== 0)
     code = data.code;
   boxToPick = code ? Math.floor(Math.random() * 5 ) : null;
 
-  if(data?.err)
-    errorText.textContent = data.err
+  const err = data.err;
+  let errorTextBase;
+  let timeRemaining;
+
+  if(err) {
+    const errorArray = err.split(" ");
+    errorTextBase = errorArray.splice(0, errorArray.length - 1);
+    timeRemaining = Number(errorArray);
+    errorText.textContent = err;
+  }
+
+  if(!isNaN(timeRemaining)) {
+    interval = setInterval(() => {
+      const seconds = Math.floor(timeRemaining/1000) % 60;
+      const minutes = Math.floor(timeRemaining/1000/60)%60;
+      const hours = Math.floor(timeRemaining/1000/60/60);
+
+      errorText.textContent = `${errorTextBase.join(" ")} ${hours ? `${hours}:` : ""} ${minutes ? `${minutes}:` : ""} ${seconds}`;
+
+      timeRemaining-=1000;
+    }, 1000)
+  }
   
   gifts.forEach( (e, i) => {
     e.addEventListener("click", () => {
@@ -27,7 +48,6 @@ const getCode = async () => {
     }, {once: true})
 })
 
-  console.log(data);
 }
 
 getCode();
