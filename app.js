@@ -1,6 +1,6 @@
 const gifts = document.querySelectorAll('.gift-img');
 const helperTexts = document.querySelectorAll(".helper-text");
-const URL = "https://wiener-backend.onrender.com";
+const URL = "http://localhost:3000";
 const errorText = document.querySelector("#error-text");
 
 let code;
@@ -8,8 +8,18 @@ let boxToPick;
 let boxesClickedCount = 0;
 
 const getCode = async () => {
-  const res = await fetch(`${URL}/giveaway/one`);
-  const data = await res.json();
+  let res;
+  let data;
+
+  try {
+  res = await fetch(`${URL}/giveaway/one`);
+  data = await res.json();
+  }
+  catch(err) {
+    errorText.textContent = "Greška pri komunikaciji sa serverom, kontaktirajte administratora";
+    errorText.classList.remove("hidden");
+  }
+
   let interval;
 
   if(data.code && data.code.length !== 0)
@@ -38,6 +48,9 @@ const getCode = async () => {
       timeRemaining-=1000;
     }, 1000)
   }
+
+  if(timeRemaining <= 0)
+    clearInterval(interval);
   
   gifts.forEach( (e, i) => {
     e.addEventListener("click", () => {
