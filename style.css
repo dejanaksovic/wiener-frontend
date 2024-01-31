@@ -28,6 +28,10 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+section {
+  position: relative;
+}
+
 /* UTILITIES */
 .clr-accent {
   color: var(--clr-accent);
@@ -87,6 +91,14 @@ body {
 
 header {
   padding: 10px 0;
+}
+
+.conffetti {
+  position:absolute;
+  inset: 0;
+  height: 100%;
+  width: auto;
+  mix-blend-mode: multiply;
 }
 
 /* HERO */

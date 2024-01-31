@@ -1,7 +1,8 @@
 const gifts = document.querySelectorAll('.gift-img');
 const helperTexts = document.querySelectorAll(".helper-text");
-const URL = "https://wiener-backend.onrender.com";
+const URL = "http://localhost:3000";
 const errorText = document.querySelector("#error-text");
+const conffetti = document.querySelector(".conffetti");
 
 let code;
 let boxToPick;
@@ -17,12 +18,13 @@ const getCode = async () => {
   }
   catch(err) {
     errorText.textContent = "Greška pri komunikaciji sa serverom, kontaktirajte administratora";
-    errorText.classList.remove("hidden");
+    console.log(err);
+    return errorText.classList.remove("hidden");
   }
 
   let interval;
 
-  if(data.code && data.code.length !== 0)
+  if(data?.code && data.code.length !== 0)
     code = data.code;
   boxToPick = code ? Math.floor(Math.random() * 5 ) : null;
 
@@ -56,6 +58,12 @@ const getCode = async () => {
     e.addEventListener("click", () => {
       helperTexts[i].textContent = boxToPick !== null && boxToPick === i ? code : "INVALID";
       boxesClickedCount+=1;
+      if(boxToPick === i) {
+        conffetti.classList.remove("hidden");
+        setTimeout(() => {
+          conffetti.classList.add("hidden");
+        }, 5000)
+      }
       if(boxesClickedCount === 5)
         errorText.classList.remove("hidden");
     }, {once: true})
