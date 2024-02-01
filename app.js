@@ -1,8 +1,13 @@
+// DOM ELEMENTS
+const helperTexts = document.querySelectorAll(".code");
 const gifts = document.querySelectorAll('.gift-img');
-const helperTexts = document.querySelectorAll(".helper-text");
-const URL = "https://wiener-backend.onrender.com";
+const giftCodes = document.querySelectorAll(".wiener-gift");
 const errorText = document.querySelector("#error-text");
 const conffetti = document.querySelector(".conffetti");
+const failed = document.querySelectorAll(".failed");
+
+// Backend URL
+const URL = "https://wiener-backend.onrender.com";
 
 let code;
 let boxToPick;
@@ -18,7 +23,7 @@ const getCode = async () => {
   }
   catch(err) {
     errorText.textContent = "Greška pri komunikaciji sa serverom, kontaktirajte administratora";
-    console.log(err);
+    console.log("erorr!");
     return errorText.classList.remove("hidden");
   }
 
@@ -48,21 +53,31 @@ const getCode = async () => {
       errorText.textContent = `${errorTextBase.join(" ")} ${hours ? `${hours}:` : ""} ${minutes ? `${minutes}:` : ""} ${seconds}`;
 
       timeRemaining-=1000;
+
+      if(timeRemaining <= 0)
+        clearInterval(interval);
+
+      if(timeRemaining === 0) {
+        errorText.textContent = `Sledeći kod je spreman!`;
+      }
     }, 1000)
   }
 
-  if(timeRemaining <= 0)
-    clearInterval(interval);
+  
   
   gifts.forEach( (e, i) => {
     e.addEventListener("click", () => {
-      helperTexts[i].textContent = boxToPick !== null && boxToPick === i ? code : "INVALID";
+      helperTexts[i].textContent = boxToPick !== null && boxToPick === i ? `WN: ${code}` : "INVALID";
       boxesClickedCount+=1;
-      if(boxToPick === i) {
+      if(boxToPick && boxToPick === i) {
         conffetti.classList.remove("hidden");
+        giftCodes[i].classList.remove("hidden");
         setTimeout(() => {
           conffetti.classList.add("hidden");
         }, 5000)
+      }
+      else {
+        failed[i].classList.remove("hidden");
       }
       if(boxesClickedCount === 5)
         errorText.classList.remove("hidden");
@@ -72,5 +87,3 @@ const getCode = async () => {
 }
 
 getCode();
-
-console.log(gifts[boxToPick]);

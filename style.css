@@ -53,6 +53,10 @@ section {
   background-color: white;
 }
 
+.bg-dark {
+  background-color: #373435;
+}
+
 .fs-l {
   font-size: 2rem;
 }
@@ -86,7 +90,7 @@ section {
 }
 
 .hidden {
-  display:none;
+  display:none !important;
 }
 
 header {
@@ -178,10 +182,57 @@ header {
   place-items: center;
 }
 
-.helper-text {
-  color: red;
+.wiener-gift {
+  position: absolute;
+  align-self: center;
+  justify-self: center;
+  padding: .5rem;
+  border-radius: 5%;
+  width: 100%;
+  aspect-ratio: 2/1;
+  scale: .7;
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+
+
+.code-icons {
+  display:flex;
+  margin-top: auto;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+
+}
+
+.code-icons img {
+  aspect-ratio: 1/1;
+}
+
+.code-icons img:nth-child(1) {
+  margin-left: 0;
+  height: 20px;
+}
+
+.code-icons img:nth-child(2) {
+  margin-right: 0;
+  height: 40px;
+}
+
+.failed {
   position:absolute;
-  text-align: center;
+  align-self: center;
+  justify-self: center;
+  background-color: var(--clr-accent);
+  width: 100%;
+  aspect-ratio: 1/1;
+  display: grid;
+  place-items: center;
+  color: red;
+  border-radius: 100%;
+  scale: .5;
+  font-size: 4rem;
 }
 
 .gift-container {
