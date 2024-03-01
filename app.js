@@ -23,7 +23,7 @@ const getCode = async () => {
   }
   catch(err) {
     errorText.textContent = "Greška pri komunikaciji sa serverom, kontaktirajte administratora";
-    console.log("erorr!");
+    console.log(err);
     return errorText.classList.remove("hidden");
   }
 
